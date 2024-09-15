@@ -1,0 +1,22 @@
+<div class="header">
+  <div class="period">
+    <p >{{ education.period }}</p>
+  </div>
+  <div class="title">
+    <strong>{{ education.course }} </strong><p> at {{ education.institution }}</p>
+  </div>
+</div>
+<ul *ngIf="education.details">
+  <li *ngFor="let detail of education.details">
+    {{ detail }}
+  </li>
+  <li *ngFor="let resarch of education.researchs">
+    <span>
+      {{resarch.authors}}, 
+    </span>
+    <a [href]="resarch.url">
+        {{resarch.name}},
+        {{resarch.date}}.
+    </a>
+  </li>
+</ul>

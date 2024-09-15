@@ -1,0 +1,185 @@
+{
+    "personalInfo": {
+      "name": "Bar Cohen",
+      "address": "Tel Aviv, Israel",
+      "mobile": "+972-52-6765436",
+      "email": "cohen.bau@gmail.com",
+      "gender": "Male",
+      "linkedin": "https://www.linkedin.com/in/bar-cohen-a1414ba2/",
+      "dateOfBirth": "30.10.1988",
+      "languages": [
+        { "language": "Hebrew", "level": "Native" },
+        { "language": "English", "level": "Fluent" }
+      ]
+    },
+    "experience": [
+      {
+        "period": "Apr 2023 - Present",
+        "title": "Full Stack Engineer",
+        "company": "CodeOasis LTD.",
+        "responsibilities": [
+          "BLE-to-IoT integration project, connecting robots with IoT technology.",
+          "Developed a scalable C# .NET backend on AWS, leveraging services like IoT Core, Lambda, API Gateway, DynamoDB, Cognito, and VPC.",
+          "Built and maintained Angular 18 web apps, enhancing user experiences for factory operations.",
+          "Performed JMeter stress tests to ensure system reliability.",
+          "Achieved a Green Belt in Cybersecurity (Security Journey). Passing penetration tests with zero vulnerabilities.",
+          "Collaborated closely with cross-functional teams to deliver robust IoT solutions."
+        ]
+      },
+      {
+        "period": "Oct 2021 – Sep 2022",
+        "title": "Full Stack Developer",
+        "company": "Tomax Scanning Solutions",
+        "responsibilities": [
+          "Led development of a SAAS solution for academic exams using AWS services.",
+          "Improved security by mitigating XSS, fixing broken access controls, updating TLS and Sensative data exposure.",
+          "Enhanced AWS infrastructure (S3, EC2, SQS, Microservices, Lambda) and optimized file performance using PDF Dev Tools.",
+          "Developed back-end features with PHP, MySQL, and managed CI/CD pipelines using Docker and Jenkins.",
+          "Front-end development using AngularJS, Vue.js, and Python."
+        ]
+      },
+      {
+        "period": "Mar 2018 – Oct 2021",
+        "title": "Full Stack Developer",
+        "company": "CAV Systems",
+        "responsibilities": [
+          "Developed and maintained back-end systems with MUMPS (GTM/Cache) on Apache Tomcat.",
+          "Created and optimized web APIs (Postman, XML, JSON) and automated order processing systems.",
+          "Led front-end development with Angular (TS 9-12) and mobile app projects.",
+          "Developing job, batch, and singleton processes with DevOps analytics and Agile methodologies.",
+          "Managed bulk database systems and implemented custom APIs for external vendors.",
+          "Creating flights cache mechanisms to allow flex 'Anywhere' search ",
+          "Issuing legal documents (PDF second signature, Email - POP)",
+          "Streamlined batch-to-office processes, developed an in-house call center app with Angular 12, and BI production analysis.",
+          "Establishing and managing Israir bulk DB, including search and sale web API.",
+          "Publish npm packages."
+        ]
+      },
+      {
+        "period": "Oct 2016 – Mar 2019",
+        "title": "Teaching Assistant, R Bioinformatic Programming",
+        "company": "Ruppin Academic Center",
+        "responsibilities": [
+          "Taught bioinformatics courses and performed statistical analyses on genetic databases.",
+          "Designed course materials, assignments, and evaluations."
+        ]
+      },
+      {
+        "period": "Jun 2015 - Aug 2016",
+        "title": "Marine Biologist",
+        "company": "ExceeMatrix Startup",
+        "responsibilities": [
+          "Conducted research on soft coral collagen for ACL reconstruction.",
+          "Examining growth methods to increase and strengthen collagen fibers in coral (ImageJ, durability tests, growth data, Excel).",
+          "Writing protocols for building and operating an inland saline aquaculture system and cultivating corals in tanks (Word).",
+          "Ensured all processes and products met FDA guidelines, conducting tests and compiling required documentation to support regulatory submissions."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "period": "Feb 2020 – May 2020",
+        "course": "AngularTS and NodeJS",
+        "institution": "Yaniv Arad Training Lab"
+      },
+      {
+        "period": "Nov 2016 – May 2017",
+        "course": "Full Stack Developer Course",
+        "institution": "Experis",
+        "details": [
+          "Low-level memory management, system tools, IPC, multi-threading and network programming, data structure and algorithm, OOD, STL and design methods.",
+          "Projects: Smart-Home (Publisher-Subscriber) OOD practices with C/C++, multiuser chat (client/server) over TCP & UDP, multi-process GNU/Linux environment.",
+          "C++ IO Game of Life."
+        ]
+      },
+      {
+        "period": "Oct 2013 – May 2016",
+        "course": "B.S Marine Bio-Technology",
+        "institution": "Ruppin Academic Center",
+        "details": [
+          "Research Assistant: Developed silver-ion-based nano-biotechnological chips."
+        ],
+        "researchs" : [
+          {
+            "url" : "https://www.researchgate.net/publication/307558872_Biosynthesis_of_Silver_Nanoparticles_by_Phaeodactylum_tricornutum",
+            "name" : "Biosynthesis of Silver Nanoparticles by Phaeodactylum tricornutum",
+            "authors" : "Wishkerman A., Cohen B., Shahar B., Oren A., Itzhaky E., Arad S.",
+            "date": "August 2016"
+          }
+        ]
+      },
+      {
+        "period": "2006",
+        "course": "Matriculation with emphasis on computer science",
+        "institution": "Mor High School, Maccabim-Reut",
+        "details": [
+          "HTML, PASCAL, data structures, and C."
+        ]
+      }
+    ],
+    "military":[
+      {
+        "period": "Mar 2007 – Jan 2013",
+        "details": [
+          "1 St Lieutenant.",
+          "Analyzed visual intelligence and designed work procedures.",
+          "Assist for the designing, absorption and assimilation of high-tech weapons.",
+          "Led team of 117 soldiers, ensuring logistics, safety, training, and integration of advanced weaponry.",
+          "Awarded Excellence During Service."
+        ]
+      },
+      {
+        "period": "Jan 2013 - Present",
+        "details": [
+          "Highly skilled Intelligence Specialist with a proven track record of success in operational planning and mission execution.",
+          "Recognized for exceptional performance during 2024 Independence Day"
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "title":"Full Stack Developer",
+        "description":"Angular, C#, .NET, AWS"
+      },
+      {
+        "title":"Cloud Services Expertise",
+        "description":"AWS (IoT Core, Lambda, API Gateway, DynamoDB, Cognito, SQS, SNS...)"
+      },
+      {
+        "title":"Front-End Development",
+        "description":"Angular (9-18), TypeScript, JavaScript, HTML, SCSS, CSS"
+      },
+      {
+        "title":"Back-End Development",
+        "description":"C#, .NET, PHP, MUMPS, MySQL, SQL, NodeJS"
+      },
+      {
+        "title":"Web API Development",
+        "description":"RESTful APIs, Postman, XML, JSON"
+      },
+      {
+        "title":"Cloud Infrastructure",
+        "description":"AWS EC2, S3, VPC, Elastic Beanstalk, ElastiCache, WAF"
+      },
+      {
+        "title":"DevOps and CI/CD",
+        "description":"Jenkins, Docker, Git, CodeCommit, Pipelines"
+      },
+      {
+        "title":"Security Practices",
+        "description":"Cybersecurity - Green Belt, XSS prevention, TLS, IAM, Penetration Testing"
+      },
+      {
+        "title":"Testing & Performance",
+        "description":"JMeter, Stress Testing, PDF Dev Tools"
+      },
+      {
+        "title":"Agile Methodologies",
+        "description":"Scrum, Kanban"
+      },
+      {
+        "title":"Personality",
+        "description":"Cross-Functional Collaboration & Leadership"
+      }
+    ]
+}
