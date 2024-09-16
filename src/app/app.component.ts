@@ -47,7 +47,7 @@ export class AppComponent {
         const img = canvas.toDataURL('image/png');
         const bufferX = 5;
         const bufferY = 5;
-        const imgProps = (doc as any).getImageProperties(img);
+        const imgProps = doc.getImageProperties(img);
         const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
         const scaleFactor = pdfWidth / element.clientWidth;
@@ -69,7 +69,18 @@ export class AppComponent {
 
         // Now add the text manually to PDF
         this.addTextContentToPDF(doc, element, bufferX, bufferY, scaleFactor);
-
+          // Add links manually
+          const links = element.querySelectorAll('a');
+          links.forEach(link => {
+            const rect = link.getBoundingClientRect();
+            const x = (rect.left - element.getBoundingClientRect().x) * scaleFactor + bufferX;
+            const y = (rect.top - element.getBoundingClientRect().y) * scaleFactor + bufferY;
+            const width = rect.width * scaleFactor;
+            const height = rect.height * scaleFactor;
+  
+            doc.link(x, y, width, height, { url: link.href });
+          });
+        
         doc.save('cv.pdf');
       });
     }
@@ -79,6 +90,7 @@ export class AppComponent {
 
     textElements.forEach((textElement: any) => {
       textElement.style.visibility = isVisible ? 'visible' : 'hidden';
+      textElement.style.hidden = isVisible ? false : true;
     });
   }
 
@@ -91,16 +103,32 @@ export class AppComponent {
     return el.parentElement ? this.isInsideIconOrLink(el.parentElement) : false;
   }
 
+  convertRGBAtoRGB(rgbaColor: string): string {
+    // Check if it's in rgba format
+    if (rgbaColor.startsWith('rgba')) {
+      // Extract the RGB values and ignore the alpha (transparency) part
+      const rgbaMatch = rgbaColor.match(/rgba?\((\d+), (\d+), (\d+), [\d.]+\)/);
+      
+      if (rgbaMatch) {
+        const [_, r, g, b] = rgbaMatch;
+        return `rgb(${r}, ${g}, ${b})`; // Return in rgb format
+      }
+    }
+  
+    // If it's already in rgb format or doesn't match, return as is
+    return rgbaColor;
+  }
+
   addTextContentToPDF(doc: jsPDF, element: HTMLElement, bufferX: number, bufferY: number, scaleFactor: number) {
     
     const addedText = new Set<Element>(); // Track added text to avoid duplicates
     const textElements = element.querySelectorAll(this.textTypes); // Add more selectors as needed
     textElements.forEach((textElement: Element) => {
       // Skip if text has already been added or is inside an icon/link
-        const text = textElement.textContent || '';
+        let text = textElement.textContent || '';
         const rect = textElement.getBoundingClientRect();
-        const x = (rect.left - element.getBoundingClientRect().left) * scaleFactor + bufferX;
-        const y = (rect.top - element.getBoundingClientRect().top) * scaleFactor + bufferY;
+        let x = (rect.left - element.getBoundingClientRect().left) * scaleFactor + bufferX;
+        let y = (rect.top - element.getBoundingClientRect().top) * scaleFactor + bufferY;
 
         // Retrieve styles from the DOM element
         const style = window.getComputedStyle(textElement);
@@ -115,22 +143,27 @@ export class AppComponent {
         // Set the styles in jsPDF
         doc.setFont(fontFamily, fontWeight === 'bold' ? 'bold' : 'normal');
         doc.setFontSize(fontSize);
-        //doc.setTextColor(style.color);
+        try{
+          doc.setTextColor(style.color);
+        }catch(error){
+          console.error(error);
+          doc.setTextColor( this.convertRGBAtoRGB(style.color));
 
-        // Add the text to the PDF
-        const maxWidth = rect.width * scaleFactor; // Ensure text wraps within bounds
-        doc.text(text, x, y, { maxWidth });
-        // Add links manually
-        const links = textElement.querySelectorAll('a');
-        links.forEach(link => {
-          const rect = link.getBoundingClientRect();
-          const x = (rect.left - element.getBoundingClientRect().left) * scaleFactor + bufferX;
-          const y = (rect.top - element.getBoundingClientRect().top) * scaleFactor + bufferY;
-          const width = rect.width * scaleFactor;
-          const height = rect.height * scaleFactor;
+        }
+        // Adjust the maxWidth based on the containing div's width (rect width)
+        const container = textElement.closest('div'); // Find the closest div (column)
+        const containerRect = container?.getBoundingClientRect() || rect; // Use container's rect or fallback to element's rect
+        const containerPadding = parseFloat(window.getComputedStyle(container!).paddingLeft) + parseFloat(window.getComputedStyle(container!).paddingRight);
 
-          doc.link(x, y, width, height, { url: link.href });
-        });
+        let maxWidth = (containerRect.width - containerPadding) * scaleFactor ; // Calculate the scaled maxWidth with padding considered
+        if (textElement.tagName.toLowerCase() === 'li') {
+          text = `• ${text}`; // Prepend bullet point symbol to list items
+          x = (rect.left - element.getBoundingClientRect().left) * scaleFactor;
+          maxWidth = (containerRect.width - containerPadding) * scaleFactor;
+        }
+        // Add the text to the PDF with wrapping within the column's maxWidth
+        doc.text(text, x, y + 2.6, { maxWidth });
+         
         addedText.add(textElement); // Mark text as added
     });
   }

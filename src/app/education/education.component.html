@@ -10,11 +10,10 @@
   <li *ngFor="let detail of education.details">
     {{ detail }}
   </li>
+  
   <li *ngFor="let resarch of education.researchs">
-    <span>
-      {{resarch.authors}}, 
-    </span>
     <a [href]="resarch.url">
+      {{resarch.authors}},
         {{resarch.name}},
         {{resarch.date}}.
     </a>

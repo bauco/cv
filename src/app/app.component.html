@@ -14,13 +14,9 @@
         <div class="card-header">
           <fa-icon [icon]="faDumbbell"></fa-icon><h2>Skills</h2>
         </div>
-        <ul>
           @for(skill of cv.skills; track skill){
-            <li  >
               <app-skills [skill]="skill"></app-skills>
-            </li>
           }
-        </ul>
       </div>
   </div>
   <!-- Main Content -->
@@ -51,13 +47,9 @@
           <div class="card-header">
             <fa-icon [icon]="faShieldBlank"></fa-icon><h2>Military</h2>
           </div>
-          <ul>
             @for(military of cv.military; track military){
-              <li  >
-                <app-military [military]="military"></app-military>
-              </li>
+              <app-military [military]="military"></app-military>
             }
-          </ul>
         </div>
       </div>
     </div>

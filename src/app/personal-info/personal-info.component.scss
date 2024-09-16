@@ -10,6 +10,7 @@
 }
 
 .links{
+    margin-top: 10px;
     width: 100%;
     display: flex;
     max-height: 30pxs;
@@ -40,5 +41,8 @@ a{
     }
     fa-icon{
         margin: 0 5px 0px 0px;
+    }
+    p{
+        margin: 0 5px;
     }
 }
